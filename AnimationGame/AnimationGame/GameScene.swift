@@ -11,7 +11,7 @@ import GameplayKit
 
 class GameScene: SKScene {
     let player = SKSpriteNode(imageNamed: "playerShip")
-
+    let bulletSound = SKAction.playSoundFileNamed("sound_spark_Laser-Like_Synth_Laser_Noise_Blast_Oneshot_03.mp3", waitForCompletion: false)    //so it starts playing and following sequences happen without waiting.
     //This function loads everytime the scene loads up
     override func didMove(to view: SKView) {
         let background = SKSpriteNode(imageNamed: "background")
@@ -42,7 +42,7 @@ class GameScene: SKScene {
         //moving bullet up
         let moveBullet = SKAction.moveTo(y: self.size.height + bullet.size.height, duration: 1) //will take one second to move up the screen
         let deleteBullet = SKAction.removeFromParent()
-        let bulletSequence = SKAction.sequence([moveBullet, deleteBullet])  //this takes an array of acions in sequence.
+        let bulletSequence = SKAction.sequence([bulletSound, moveBullet, deleteBullet])  //this takes an array of acions in sequence.
         bullet.run(bulletSequence)
         
     
@@ -50,5 +50,16 @@ class GameScene: SKScene {
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         fireBullet()
+    }
+    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+        //lets figure out where in the screen we are touching and how much distance we have dragged our finger
+        for touch: AnyObject in touches{
+            let pointOfTouch = touch.location(in:self)
+            let previousPointOfTouch = touch.previousLocation(in: self)
+            
+            let amountDragged = pointOfTouch.x - previousPointOfTouch.x //finding the difference (how far we dragged our finger)
+            player.position.x += amountDragged
+            
+        }
     }
 }

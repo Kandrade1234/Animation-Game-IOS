@@ -17,6 +17,7 @@
 		4EC3F985221F58A000A7DF6A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4EC3F983221F58A000A7DF6A /* LaunchScreen.storyboard */; };
 		4EC3F990221F58A000A7DF6A /* AnimationGameTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC3F98F221F58A000A7DF6A /* AnimationGameTests.swift */; };
 		4EC3F99B221F58A000A7DF6A /* AnimationGameUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC3F99A221F58A000A7DF6A /* AnimationGameUITests.swift */; };
+		4EC3F9A9222254CC00A7DF6A /* sound_spark_Laser-Like_Synth_Laser_Noise_Blast_Oneshot_03.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4EC3F9A8222254CC00A7DF6A /* sound_spark_Laser-Like_Synth_Laser_Noise_Blast_Oneshot_03.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,7 @@
 		4EC3F996221F58A000A7DF6A /* AnimationGameUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AnimationGameUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4EC3F99A221F58A000A7DF6A /* AnimationGameUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationGameUITests.swift; sourceTree = "<group>"; };
 		4EC3F99C221F58A000A7DF6A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4EC3F9A8222254CC00A7DF6A /* sound_spark_Laser-Like_Synth_Laser_Noise_Blast_Oneshot_03.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "sound_spark_Laser-Like_Synth_Laser_Noise_Blast_Oneshot_03.mp3"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +109,7 @@
 				4EC3F976221F589F00A7DF6A /* GameScene.sks */,
 				4EC3F978221F589F00A7DF6A /* Actions.sks */,
 				4EC3F97A221F589F00A7DF6A /* GameScene.swift */,
+				4EC3F9A8222254CC00A7DF6A /* sound_spark_Laser-Like_Synth_Laser_Noise_Blast_Oneshot_03.mp3 */,
 				4EC3F97C221F589F00A7DF6A /* GameViewController.swift */,
 				4EC3F97E221F589F00A7DF6A /* Main.storyboard */,
 				4EC3F981221F58A000A7DF6A /* Assets.xcassets */,
@@ -240,6 +243,7 @@
 			files = (
 				4EC3F980221F589F00A7DF6A /* Main.storyboard in Resources */,
 				4EC3F977221F589F00A7DF6A /* GameScene.sks in Resources */,
+				4EC3F9A9222254CC00A7DF6A /* sound_spark_Laser-Like_Synth_Laser_Noise_Blast_Oneshot_03.mp3 in Resources */,
 				4EC3F982221F58A000A7DF6A /* Assets.xcassets in Resources */,
 				4EC3F985221F58A000A7DF6A /* LaunchScreen.storyboard in Resources */,
 				4EC3F979221F589F00A7DF6A /* Actions.sks in Resources */,
