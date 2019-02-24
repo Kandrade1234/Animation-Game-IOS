@@ -10,9 +10,13 @@ import SpriteKit
 import GameplayKit
 
 class GameScene: SKScene {
-    let player = SKSpriteNode(imageNamed: "playerShip")
+    let player = SKSpriteNode(imageNamed: "NyanCat")
     let bulletSound = SKAction.playSoundFileNamed("sound_spark_Laser-Like_Synth_Laser_Noise_Blast_Oneshot_03.mp3", waitForCompletion: false)    //so it starts playing and following sequences happen without waiting.
-     func random(min: CGFloat, max: CGFloat) -> CGFloat {
+    let backgroundSound = SKAction.playSoundFileNamed("NyanCatSong.mp3", waitForCompletion: false)
+    
+    
+    
+    func random(min: CGFloat, max: CGFloat) -> CGFloat {
         //return random() * (max-min) + min
         return CGFloat(arc4random_uniform(UInt32(max - min)) + UInt32(min))
     }
@@ -40,18 +44,20 @@ class GameScene: SKScene {
         background.zPosition = 0    //order in layer
         self.addChild(background)   //take the code above and make it!
         
-        player.setScale(1)  //normal size, if bigger increase the number...each integer is twice as big as original
+        player.setScale(0.2)  //normal size, if bigger increase the number...each integer is twice as big as original
         player.position = CGPoint(x: self.size.width/2, y: self.size.height * 0.2)  //this will make the player spawn from 20 percent of the screen
         player.zPosition = 2
         self.addChild(player)
         
         startNewLevel()
+        let bgSongSequence = SKAction.sequence([backgroundSound])
+        player.run(bgSongSequence)
         
     }
     
     func startNewLevel(){
         let spawn = SKAction.run(spawnEnemy)
-        let waitToSpawn = SKAction.wait(forDuration: 1)
+        let waitToSpawn = SKAction.wait(forDuration: 1.5)
         let SpawnSequence = SKAction.sequence([spawn, waitToSpawn])
         let spawnForever = SKAction.repeatForever(SpawnSequence)
         self.run(spawnForever)
@@ -61,7 +67,7 @@ class GameScene: SKScene {
     func fireBullet(){
         //spawn bullet
         let bullet = SKSpriteNode(imageNamed: "bullet")
-        bullet.setScale(1)
+        bullet.setScale(0.2)
         bullet.position = player.position
         bullet.zPosition = 1
         self.addChild(bullet)
@@ -78,17 +84,17 @@ class GameScene: SKScene {
     func spawnEnemy(){
         
         let randomXStart = random(min: gameArea.minX, max: gameArea.maxX)
-        let randomXEnd = random(min: gameArea.minX, max: gameArea.maxX)
+        let randomXEnd = random(min: gameArea.minX + player.size.width/2, max: gameArea.maxX - player.size.width/2)
         
         let startPoint = CGPoint(x: randomXStart, y: self.size.height * 1.2) //gettting 20 percent of top of screen (beyond visible screen
         let endPoint = CGPoint(x: randomXEnd, y: -self.size.height * 0.2)   //this is getting the bottom of the height and then 20 percent lower
         
-        let enemy = SKSpriteNode(imageNamed: "enemyShip")
-        enemy.setScale(1)
+        let enemy = SKSpriteNode(imageNamed: "TacNayn")
+        enemy.setScale(0.5)
         enemy.position = startPoint
         enemy.zPosition = 2
         self.addChild(enemy)
-        let moveEnemy = SKAction.move(to: endPoint, duration: 2.5) // seconds
+        let moveEnemy = SKAction.move(to: endPoint, duration: 3) // seconds
         let deleteEnemy = SKAction.removeFromParent()
         let enemySequence = SKAction.sequence([moveEnemy, deleteEnemy])
         enemy.run(enemySequence)
