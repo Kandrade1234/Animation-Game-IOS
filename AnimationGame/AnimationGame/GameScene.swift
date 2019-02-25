@@ -15,7 +15,8 @@ class GameScene: SKScene {
     let backgroundSound = SKAction.playSoundFileNamed("NyanCatSong.mp3", waitForCompletion: false)
     
     
-    
+    let runKey = "RemoveKey"
+
     func random(min: CGFloat, max: CGFloat) -> CGFloat {
         //return random() * (max-min) + min
         return CGFloat(arc4random_uniform(UInt32(max - min)) + UInt32(min))
@@ -63,7 +64,14 @@ class GameScene: SKScene {
         self.run(spawnForever)
     }
     
-    
+    func fireBulletDuration(){
+        let spawn = SKAction.run(fireBullet)
+        let waitToSpawn = SKAction.wait(forDuration: 0.3)
+        let SpawnSequence = SKAction.sequence([spawn, waitToSpawn])
+        let spawnForever = SKAction.repeatForever(SpawnSequence)
+        self.run(spawnForever, withKey:runKey)
+        
+    }
     func fireBullet(){
         //spawn bullet
         let bullet = SKSpriteNode(imageNamed: "bullet")
@@ -77,8 +85,6 @@ class GameScene: SKScene {
         let deleteBullet = SKAction.removeFromParent()
         let bulletSequence = SKAction.sequence([bulletSound, moveBullet, deleteBullet])  //this takes an array of acions in sequence.
         bullet.run(bulletSequence)
-        
-    
     }
     
     func spawnEnemy(){
@@ -106,17 +112,19 @@ class GameScene: SKScene {
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        fireBullet()
+        self.removeAction(forKey: runKey)
+        fireBulletDuration()
+    }
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.removeAction(forKey: runKey)
     }
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         //lets figure out where in the screen we are touching and how much distance we have dragged our finger
         for touch: AnyObject in touches{
             let pointOfTouch = touch.location(in:self)
             let previousPointOfTouch = touch.previousLocation(in: self)
-            
             let amountDragged = pointOfTouch.x - previousPointOfTouch.x //finding the difference (how far we dragged our finger)
             player.position.x += amountDragged
-            
             if player.position.x > gameArea.maxX - player.size.width/2 - player.size.width/2{
                 player.position.x = gameArea.maxX - player.size.width/2 - player.size.width/2
             }
@@ -125,4 +133,5 @@ class GameScene: SKScene {
             }
         }
     }
+    
 }
