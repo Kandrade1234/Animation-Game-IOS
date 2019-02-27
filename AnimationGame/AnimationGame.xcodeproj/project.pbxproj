@@ -20,6 +20,7 @@
 		4EC3F9A9222254CC00A7DF6A /* sound_spark_Laser-Like_Synth_Laser_Noise_Blast_Oneshot_03.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4EC3F9A8222254CC00A7DF6A /* sound_spark_Laser-Like_Synth_Laser_Noise_Blast_Oneshot_03.mp3 */; };
 		4EC3F9AB22226F3E00A7DF6A /* NyanCatSong.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4EC3F9AA22226F3E00A7DF6A /* NyanCatSong.mp3 */; };
 		4EC3F9AD22262B4400A7DF6A /* ExplosionSFX.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4EC3F9AC22262B4400A7DF6A /* ExplosionSFX.mp3 */; };
+		4EC3F9AF222649FE00A7DF6A /* theBoldFont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4EC3F9AE222649FD00A7DF6A /* theBoldFont.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +60,7 @@
 		4EC3F9A8222254CC00A7DF6A /* sound_spark_Laser-Like_Synth_Laser_Noise_Blast_Oneshot_03.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "sound_spark_Laser-Like_Synth_Laser_Noise_Blast_Oneshot_03.mp3"; sourceTree = "<group>"; };
 		4EC3F9AA22226F3E00A7DF6A /* NyanCatSong.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = NyanCatSong.mp3; sourceTree = "<group>"; };
 		4EC3F9AC22262B4400A7DF6A /* ExplosionSFX.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ExplosionSFX.mp3; sourceTree = "<group>"; };
+		4EC3F9AE222649FD00A7DF6A /* theBoldFont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = theBoldFont.ttf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +111,7 @@
 		4EC3F973221F589F00A7DF6A /* AnimationGame */ = {
 			isa = PBXGroup;
 			children = (
+				4EC3F9AE222649FD00A7DF6A /* theBoldFont.ttf */,
 				4EC3F9AA22226F3E00A7DF6A /* NyanCatSong.mp3 */,
 				4EC3F974221F589F00A7DF6A /* AppDelegate.swift */,
 				4EC3F976221F589F00A7DF6A /* GameScene.sks */,
@@ -255,6 +258,7 @@
 				4EC3F982221F58A000A7DF6A /* Assets.xcassets in Resources */,
 				4EC3F985221F58A000A7DF6A /* LaunchScreen.storyboard in Resources */,
 				4EC3F979221F589F00A7DF6A /* Actions.sks in Resources */,
+				4EC3F9AF222649FE00A7DF6A /* theBoldFont.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
