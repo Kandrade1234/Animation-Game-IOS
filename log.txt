@@ -1,0 +1,266 @@
+commit 38ceebfdbfc7dcf38952363b7b7ef5309939bbbe
+Author: Kevin Andrade <kandrad2@binghamton.edu>
+Date:   Wed Feb 27 23:49:31 2019 -0500
+
+    modified Readme
+
+ README.md | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+commit f5448908bd441b4f35c8e85b6d510888fc2b5d1b
+Author: Kevin Andrade <kandrad2@binghamton.edu>
+Date:   Wed Feb 27 23:45:56 2019 -0500
+
+    Added readme
+
+ README.md | 8 +++++++-
+ 1 file changed, 7 insertions(+), 1 deletion(-)
+
+commit 3f07571c837abadd712343b1273a4c488f3c8297
+Author: Kevin Andrade <kandrad2@binghamton.edu>
+Date:   Wed Feb 27 23:27:15 2019 -0500
+
+    added a planet to protect and a main menu
+
+ .DS_Store                                          | Bin 0 -> 6148 bytes
+ .../AnimationGame.xcodeproj/project.pbxproj        |   4 ++
+ .../UserInterfaceState.xcuserstate                 | Bin 29555 -> 29255 bytes
+ .../enemyShip.imageset/enemyShip.png               | Bin 1487 -> 0 bytes
+ .../explosition.imageset/Contents.json             |  21 -------
+ .../explosition.imageset/explosition.png           | Bin 6695 -> 0 bytes
+ .../Contents.json                                  |   2 +-
+ .../Assets.xcassets/planet.imageset/planet.png     | Bin 0 -> 1099912 bytes
+ .../playerShip.imageset/Contents.json              |  21 -------
+ .../playerShip.imageset/playerShip.png             | Bin 3729 -> 0 bytes
+ AnimationGame/AnimationGame/GameScene.swift        |  13 +++-
+ .../AnimationGame/GameViewController.swift         |   2 +-
+ AnimationGame/AnimationGame/MainMenu.swift         |  68 +++++++++++++++++++++
+ 13 files changed, 85 insertions(+), 46 deletions(-)
+
+commit 21295d5380e429c3accfc3f1c53d0a294bc0d8ab
+Author: Kevin Andrade <kandrad2@binghamton.edu>
+Date:   Wed Feb 27 22:33:46 2019 -0500
+
+    removed unecessary folder
+
+ .../Animation Game.xcodeproj/project.pbxproj       | 339 ---------------------
+ .../project.xcworkspace/contents.xcworkspacedata   |   7 -
+ .../xcshareddata/IDEWorkspaceChecks.plist          |   8 -
+ .../UserInterfaceState.xcuserstate                 | Bin 14830 -> 0 bytes
+ .../xcschemes/xcschememanagement.plist             |  14 -
+ Animation Game/Animation Game/AppDelegate.swift    |  46 ---
+ .../AppIcon.appiconset/Contents.json               |  98 ------
+ .../Animation Game/Assets.xcassets/Contents.json   |   6 -
+ .../Base.lproj/LaunchScreen.storyboard             |  25 --
+ .../Animation Game/Base.lproj/Main.storyboard      |  24 --
+ Animation Game/Animation Game/Info.plist           |  45 ---
+ Animation Game/Animation Game/ViewController.swift |  21 --
+ 12 files changed, 633 deletions(-)
+
+commit 5fd8dd1f915cd70dce4ed2c514748ac892bcccae
+Author: Kevin Andrade <kandrad2@binghamton.edu>
+Date:   Wed Feb 27 22:20:39 2019 -0500
+
+    I  changed the background, added a scrolling background and buttons
+
+ .../UserInterfaceState.xcuserstate                 | Bin 29687 -> 29555 bytes
+ .../background.imageset/background.jpg             | Bin 381877 -> 121862 bytes
+ AnimationGame/AnimationGame/GameScene.swift        | 109 ++++++++++++++++++---
+ 3 files changed, 93 insertions(+), 16 deletions(-)
+
+commit 3bf18ad08810ffb8e958bac6c9a2787800596c36
+Author: Kevin Andrade <kandrad2@binghamton.edu>
+Date:   Wed Feb 27 21:08:19 2019 -0500
+
+    added a game over scene, fixed some redundant code and fixed background looping audio issues.
+
+ .../AnimationGame.xcodeproj/project.pbxproj        |   4 ++
+ .../UserInterfaceState.xcuserstate                 | Bin 27421 -> 29687 bytes
+ AnimationGame/AnimationGame/GameOver.swift         |  80 +++++++++++++++++++++
+ AnimationGame/AnimationGame/GameScene.swift        |  64 ++++++++++++++---
+ 4 files changed, 137 insertions(+), 11 deletions(-)
+
+commit e4fc95f4bbaade5328d62dec1b0646006a058d66
+Author: Kevin Andrade <kandrad2@binghamton.edu>
+Date:   Wed Feb 27 00:56:04 2019 -0500
+
+    added a scoring system and lives system with animation
+
+ .../AnimationGame.xcodeproj/project.pbxproj        |   4 ++
+ .../UserInterfaceState.xcuserstate                 | Bin 25699 -> 27421 bytes
+ AnimationGame/AnimationGame/GameScene.swift        |  72 +++++++++++++++++++--
+ AnimationGame/AnimationGame/Info.plist             |   4 ++
+ AnimationGame/AnimationGame/theBoldFont.ttf        | Bin 0 -> 42968 bytes
+ 5 files changed, 73 insertions(+), 7 deletions(-)
+
+commit 228f210d086125485ef70f01730be419ea939b8b
+Author: Kevin Andrade <kandrad2@binghamton.edu>
+Date:   Tue Feb 26 21:26:38 2019 -0500
+
+    I added more sounde effects, resized player and enemies, added collision detection and animation upon death of player or enemy
+
+ .../AnimationGame.xcodeproj/project.pbxproj        |   4 +
+ .../UserInterfaceState.xcuserstate                 | Bin 25126 -> 25699 bytes
+ .../Assets.xcassets/NyanCat.imageset/Contents.json |   2 +-
+ .../NyanCat.imageset/NyanCat (1).png               | Bin 0 -> 6310 bytes
+ .../Assets.xcassets/NyanCat.imageset/NyanCat.png   | Bin 29399 -> 0 bytes
+ .../Assets.xcassets/TacNayn.imageset/Contents.json |   2 +-
+ .../TacNayn.imageset/TacNayn (1).png               | Bin 0 -> 33364 bytes
+ .../Assets.xcassets/TacNayn.imageset/TacNayn.png   | Bin 51487 -> 0 bytes
+ .../explosion.imageset/Contents.json               |  21 +++++
+ .../explosion.imageset/explosion.png               | Bin 0 -> 592100 bytes
+ AnimationGame/AnimationGame/ExplosionSFX.mp3       | Bin 0 -> 10368 bytes
+ AnimationGame/AnimationGame/GameScene.swift        |  91 ++++++++++++++++++++-
+ 12 files changed, 116 insertions(+), 4 deletions(-)
+
+commit 0acbc789ddb352dfd56872bffa92b3bdb15543cb
+Author: Kevin Andrade <kandrad2@binghamton.edu>
+Date:   Mon Feb 25 11:42:23 2019 -0500
+
+    modified shooting sequence so it shoots when a press is on the screen and stops when lifting touch
+
+ .../UserInterfaceState.xcuserstate                 | Bin 25104 -> 25126 bytes
+ AnimationGame/AnimationGame/GameScene.swift        |  23 ++++++++++++++-------
+ 2 files changed, 16 insertions(+), 7 deletions(-)
+
+commit 9dc6403ad2ef09f35bb60d55dcb53fc38664c46a
+Author: Kevin Andrade <kandrad2@binghamton.edu>
+Date:   Sun Feb 24 01:54:41 2019 -0500
+
+    changed up sprites; added a background song; adjusted sizing and orientation of game.
+
+ .../AnimationGame.xcodeproj/project.pbxproj        |   4 ++++
+ .../UserInterfaceState.xcuserstate                 | Bin 24888 -> 25104 bytes
+ AnimationGame/AnimationGame/.DS_Store              | Bin 0 -> 6148 bytes
+ .../AnimationGame/Assets.xcassets/.DS_Store        | Bin 0 -> 6148 bytes
+ .../Assets.xcassets/NyanCat.imageset/Contents.json |  21 ++++++++++++++++++
+ .../Assets.xcassets/NyanCat.imageset/NyanCat.png   | Bin 0 -> 29399 bytes
+ .../Assets.xcassets/TacNayn.imageset/Contents.json |  21 ++++++++++++++++++
+ .../Assets.xcassets/TacNayn.imageset/TacNayn.png   | Bin 0 -> 51487 bytes
+ .../background.imageset/Contents.json              |   2 +-
+ .../background.imageset/background.jpg             | Bin 0 -> 381877 bytes
+ .../background.imageset/background.png             | Bin 57795 -> 0 bytes
+ .../Assets.xcassets/bullet.imageset/bullet.png     | Bin 2282 -> 24945 bytes
+ AnimationGame/AnimationGame/GameScene.swift        |  24 +++++++++++++--------
+ AnimationGame/AnimationGame/NyanCatSong.mp3        | Bin 0 -> 5202371 bytes
+ 14 files changed, 62 insertions(+), 10 deletions(-)
+
+commit 4dff7f75b57fe14de42b8c4f395ded1cd3929787
+Author: Kevin Andrade <kandrad2@binghamton.edu>
+Date:   Sun Feb 24 00:50:03 2019 -0500
+
+    added enemys and have them spawn
+
+ .../UserInterfaceState.xcuserstate                  | Bin 24903 -> 24888 bytes
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit 2669b38b5bc53eac6cb861fa3518fac0f498003f
+Author: Kevin Andrade <kandrad2@binghamton.edu>
+Date:   Sun Feb 24 00:44:26 2019 -0500
+
+    added enemys and have them spawn
+
+ .../UserInterfaceState.xcuserstate                 | Bin 24893 -> 24903 bytes
+ AnimationGame/AnimationGame/GameScene.swift        |  61 ++++++++++++++++++++-
+ 2 files changed, 59 insertions(+), 2 deletions(-)
+
+commit 3a9e5e3ce0d4c9b21022a7693ea35a429f6d4b3a
+Author: Kevin Andrade <kandrad2@binghamton.edu>
+Date:   Sat Feb 23 23:48:44 2019 -0500
+
+    added shooting sound effect and player motion
+
+ .../AnimationGame.xcodeproj/project.pbxproj         |   4 ++++
+ .../UserInterfaceState.xcuserstate                  | Bin 23140 -> 24893 bytes
+ AnimationGame/AnimationGame/GameScene.swift         |  15 +++++++++++++--
+ ...aser-Like_Synth_Laser_Noise_Blast_Oneshot_03.mp3 | Bin 0 -> 19590 bytes
+ 4 files changed, 17 insertions(+), 2 deletions(-)
+
+commit 3a6dcd1b64dea125df8caa93c1a2f4eea5a41793
+Author: Kevin Andrade <kandrad2@binghamton.edu>
+Date:   Fri Feb 22 23:45:06 2019 -0500
+
+    added energy bullet with firing animation on touch
+
+ .../AnimationGame.xcodeproj/project.pbxproj        |   2 ++
+ .../UserInterfaceState.xcuserstate                 | Bin 20699 -> 23140 bytes
+ .../Assets.xcassets/bullet.imageset/Contents.json  |  21 +++++++++++++++++
+ .../Assets.xcassets/bullet.imageset/bullet.png     | Bin 0 -> 2282 bytes
+ AnimationGame/AnimationGame/GameScene.swift        |  26 +++++++++++++++++++--
+ 5 files changed, 47 insertions(+), 2 deletions(-)
+
+commit eddde7d0c9d0f315fc296ba8c4970a9f6c5254e3
+Author: Kevin Andrade <kandrad2@binghamton.edu>
+Date:   Thu Feb 21 17:43:52 2019 -0500
+
+    had to redo project due to choosing the wrong type of file
+
+ .../UserInterfaceState.xcuserstate                 | Bin 14641 -> 14830 bytes
+ Animation Game/Animation Game/ViewController.swift |   1 -
+ .../AnimationGame.xcodeproj/project.pbxproj        | 597 +++++++++++++++++++++
+ .../project.xcworkspace/contents.xcworkspacedata   |   7 +
+ .../xcshareddata/IDEWorkspaceChecks.plist          |   8 +
+ .../UserInterfaceState.xcuserstate                 | Bin 0 -> 20699 bytes
+ .../xcschemes/xcschememanagement.plist             |  14 +
+ AnimationGame/AnimationGame/Actions.sks            | Bin 0 -> 1892 bytes
+ AnimationGame/AnimationGame/AppDelegate.swift      |  46 ++
+ .../AppIcon.appiconset/Contents.json               |  98 ++++
+ .../AnimationGame/Assets.xcassets/Contents.json    |   6 +
+ .../background.imageset/Contents.json              |  21 +
+ .../background.imageset/background.png             | Bin 0 -> 57795 bytes
+ .../enemyShip.imageset/Contents.json               |  21 +
+ .../enemyShip.imageset/enemyShip.png               | Bin 0 -> 1487 bytes
+ .../explosition.imageset/Contents.json             |  21 +
+ .../explosition.imageset/explosition.png           | Bin 0 -> 6695 bytes
+ .../playerShip.imageset/Contents.json              |  21 +
+ .../playerShip.imageset/playerShip.png             | Bin 0 -> 3729 bytes
+ .../Base.lproj/LaunchScreen.storyboard             |  25 +
+ .../AnimationGame/Base.lproj/Main.storyboard       |  24 +
+ AnimationGame/AnimationGame/GameScene.sks          | Bin 0 -> 4694 bytes
+ AnimationGame/AnimationGame/GameScene.swift        |  32 ++
+ .../AnimationGame/GameViewController.swift         |  56 ++
+ AnimationGame/AnimationGame/Info.plist             |  46 ++
+ .../AnimationGameTests/AnimationGameTests.swift    |  34 ++
+ AnimationGame/AnimationGameTests/Info.plist        |  22 +
+ .../AnimationGameUITests.swift                     |  34 ++
+ AnimationGame/AnimationGameUITests/Info.plist      |  22 +
+ 29 files changed, 1155 insertions(+), 1 deletion(-)
+
+commit 27f605ee21c3f9f36fa26e18b811398fc417d546
+Author: Kevin Andrade <kandrad2@binghamton.edu>
+Date:   Wed Feb 20 23:25:05 2019 -0500
+
+    comment
+
+ .../UserInterfaceState.xcuserstate                   | Bin 9550 -> 14641 bytes
+ Animation Game/Animation Game/ViewController.swift   |   2 ++
+ 2 files changed, 2 insertions(+)
+
+commit a0263c675fe56c7b40c964419d6893b11ba82aab
+Author: Kevin Andrade <kandrad2@binghamton.edu>
+Date:   Tue Feb 19 23:46:16 2019 -0500
+
+    Started
+
+ .../Animation Game.xcodeproj/project.pbxproj       | 339 +++++++++++++++++++++
+ .../project.xcworkspace/contents.xcworkspacedata   |   7 +
+ .../xcshareddata/IDEWorkspaceChecks.plist          |   8 +
+ .../UserInterfaceState.xcuserstate                 | Bin 0 -> 9550 bytes
+ .../xcschemes/xcschememanagement.plist             |  14 +
+ Animation Game/Animation Game/AppDelegate.swift    |  46 +++
+ .../AppIcon.appiconset/Contents.json               |  98 ++++++
+ .../Animation Game/Assets.xcassets/Contents.json   |   6 +
+ .../Base.lproj/LaunchScreen.storyboard             |  25 ++
+ .../Animation Game/Base.lproj/Main.storyboard      |  24 ++
+ Animation Game/Animation Game/Info.plist           |  45 +++
+ Animation Game/Animation Game/ViewController.swift |  20 ++
+ 12 files changed, 632 insertions(+)
+
+commit d6c47fc3207ca01a3f78987ee54182200eb7f716
+Author: Kevin Andrade <35554779+Kandrade1234@users.noreply.github.com>
+Date:   Tue Feb 19 23:37:42 2019 -0500
+
+    Initial commit
+
+ README.md | 1 +
+ 1 file changed, 1 insertion(+)
