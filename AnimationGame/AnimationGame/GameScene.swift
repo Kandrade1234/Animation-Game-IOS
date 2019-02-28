@@ -90,6 +90,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         scoreLabel.zPosition = 20
         self.addChild(scoreLabel)
         
+        let planet = SKSpriteNode(imageNamed: "planet")
+        planet.position = CGPoint (x: self.size.width * 0.5, y: -self.size.height * 0.10)
+        planet.zPosition = 3
+        self.addChild(planet)
+        
         livesLabel.text = "Lives: 3"
         livesLabel.fontColor = SKColor.white
         livesLabel.fontSize = 70
@@ -285,15 +290,19 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             case 2: do {
                 levelDuration = 1.0
                 self.amountToMovePerSecond = 700.00
+                self.durationOfBullet = 0.25
             }
             case 3: do{
                 levelDuration = 0.5
                 self.amountToMovePerSecond = 900.00
+                self.durationOfBullet = 0.2
+
 
             }
             case 4: do{
                 levelDuration = 0.2
                 self.amountToMovePerSecond = 1200.00
+                self.durationOfBullet = 0.10
             }
             default:
                 levelDuration = 0.5
@@ -305,10 +314,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let spawnForever = SKAction.repeatForever(SpawnSequence)
         self.run(spawnForever, withKey:"spawningEnemies")
     }
-    
+    var durationOfBullet = 0.3
     func fireBulletDuration(){
         let spawn = SKAction.run(fireBullet)
-        let waitToSpawn = SKAction.wait(forDuration: 0.3)
+        let waitToSpawn = SKAction.wait(forDuration: durationOfBullet)
         let SpawnSequence = SKAction.sequence([spawn, waitToSpawn])
         let spawnForever = SKAction.repeatForever(SpawnSequence)
         self.run(spawnForever, withKey:runKey)
