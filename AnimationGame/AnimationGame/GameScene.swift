@@ -20,7 +20,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         case inGame         //during game
         case afterGame      //after game
     }
-    var currentGameState = gameState.inGame
+    var currentGameState = gameState.preGame
     
     struct PhysicsCategories{
         static let None : UInt32 = 0
@@ -33,7 +33,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     let bulletSound = SKAction.playSoundFileNamed("sound_spark_Laser-Like_Synth_Laser_Noise_Blast_Oneshot_03.mp3", waitForCompletion: false)    //so it starts playing and following sequences happen without waiting.
     let explosionSound = SKAction.playSoundFileNamed("ExplosionSFX.mp3", waitForCompletion: false)
     var backgroundMusic: SKAudioNode!
-    
+    let tapStartLabel = SKLabelNode(fontNamed: "The Bold Font")
     let runKey = "RemoveKey"
 
     func random(min: CGFloat, max: CGFloat) -> CGFloat {
@@ -61,14 +61,19 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     override func didMove(to view: SKView) {
         gameScore = 0
         self.physicsWorld.contactDelegate = self //now we can use physic contacts in our scene
-        let background = SKSpriteNode(imageNamed: "background")
-        background.size = self.size //this will set the background to the scene size
-        background.position = CGPoint(x: self.size.width/2 , y:self.size.height/2)  //this will get us to the center point of the scene
-        background.zPosition = 0    //order in layer
-        self.addChild(background)   //take the code above and make it!
-        
+       
+        //making two backgrounds to scrolling effect
+        for i in 0...1{
+            let background = SKSpriteNode(imageNamed: "background")
+            background.size = self.size //this will set the background to the scene size
+            background.anchorPoint = CGPoint(x:0.5, y:0)
+            background.position = CGPoint(x: self.size.width/2 , y:self.size.height*CGFloat(i))  //this will get us a  background under screen and another on screen
+            background.zPosition = 0    //order in layer
+            background.name = "Background"
+            self.addChild(background)   //take the code above and make it!
+        }
         player.setScale(0.2)  //normal size, if bigger increase the number...each integer is twice as big as original
-        player.position = CGPoint(x: self.size.width/2, y: self.size.height * 0.2)  //this will make the player spawn from 20 percent of the screen
+        player.position = CGPoint(x: self.size.width/2, y: 0 - player.size.height)  //this will make the player spawn at a certain percentage of screen
         player.zPosition = 2
         player.physicsBody = SKPhysicsBody(rectangleOf: player.size)
         player.physicsBody!.affectedByGravity = false   //so gravity does not affect our player
@@ -81,7 +86,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         scoreLabel.fontColor = SKColor.white
         scoreLabel.horizontalAlignmentMode = SKLabelHorizontalAlignmentMode.left
         scoreLabel.zRotation = .pi/2
-        scoreLabel.position = CGPoint(x: self.size.width * 0.25, y: self.size.height * 0.05)
+        scoreLabel.position = CGPoint(x: self.size.width * 0.25, y: self.size.height  - scoreLabel.frame.size.height)
         scoreLabel.zPosition = 20
         self.addChild(scoreLabel)
         
@@ -90,15 +95,74 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         livesLabel.fontSize = 70
         livesLabel.horizontalAlignmentMode = SKLabelHorizontalAlignmentMode.left
         livesLabel.zRotation = .pi/2
-        livesLabel.position = CGPoint(x: self.size.width * 0.25, y: self.size.height * 0.80)
+        livesLabel.position = CGPoint(x: self.size.width * 0.25, y: self.size.height + livesLabel.frame.size.height)
         livesLabel.zPosition = 20
         self.addChild(livesLabel)
+        let moveOnToScreenScore = SKAction.moveTo(y: self.size.height * 0.05, duration: 0.3)
+        let moveOnToScreenLives = SKAction.moveTo(y: self.size.height * 0.80, duration: 0.3)
         
-        startNewLevel()
+        scoreLabel.run(moveOnToScreenScore)
+        livesLabel.run(moveOnToScreenLives)
+        
+        
+        tapStartLabel.text = "Tap To Begin"
+        tapStartLabel.fontSize = 100
+        tapStartLabel.fontColor = SKColor.white
+        tapStartLabel.zPosition = 1
+        tapStartLabel.position =  CGPoint(x: self.size.width * 0.5, y: self.size.height * 0.48)
+        tapStartLabel.zRotation = .pi/2
+        tapStartLabel.alpha = 0 //transparent 0 is seethrough, 1 normal
+        self.addChild(tapStartLabel)
+        let fadeInAction = SKAction.fadeIn(withDuration: 0.3)
+        tapStartLabel.run(fadeInAction)
+        
+        
+       
+    }
+    
+    var lastUpdateTime: TimeInterval = 0
+    var deltaFrameTime: TimeInterval = 0
+    var amountToMovePerSecond: CGFloat = 400.00
+    
+    //runs once per game frame
+    override func update(_ currentTime: TimeInterval) {
+        
+        if lastUpdateTime == 0{
+            lastUpdateTime = currentTime
+        }
+        else{
+            deltaFrameTime = currentTime - lastUpdateTime   //the difference of time
+            lastUpdateTime = currentTime
+        }
+        let amountToMoveBG = amountToMovePerSecond * CGFloat(deltaFrameTime)    //how much to move each background
+        self.enumerateChildNodes(withName: "Background"){
+            background, stop in
+            if self.currentGameState == gameState.inGame{
+                background.position.y -= amountToMoveBG
+            }
+            if background.position.y < -self.size.height{
+                background.position.y += self.size.height * 2
+            }
+        }
+    }
+    
+    func startGame(){
         if let musicURL = Bundle.main.url(forResource: "NyanCatSong", withExtension: "mp3"){
             backgroundMusic = SKAudioNode(url: musicURL)
             addChild(backgroundMusic)
         }
+        //label that deletes
+        currentGameState = gameState.inGame
+        let fadeOutAction = SKAction.fadeOut(withDuration: 0.5)
+        let deleteAction = SKAction.removeFromParent()
+        let deleteSequence = SKAction.sequence([fadeOutAction, deleteAction])
+        tapStartLabel.run(deleteSequence)
+        
+        //moves ship on screen
+        let moveShipOnToScreen = SKAction.moveTo(y: self.size.height * 0.2, duration: 0.5)
+        let startLevelAction = SKAction.run(startNewLevel)
+        let startGameSequence = SKAction.sequence([moveShipOnToScreen, startLevelAction])
+        player.run(startGameSequence)
     }
     func loseALife(){
         livesNumber -= 1
@@ -218,9 +282,19 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         switch levelNumber{
             case 1: levelDuration = 1.5
-            case 2: levelDuration = 1.2
-            case 3: levelDuration = 0.8
-            case 4: levelDuration = 0.5
+            case 2: do {
+                levelDuration = 1.0
+                self.amountToMovePerSecond = 700.00
+            }
+            case 3: do{
+                levelDuration = 0.5
+                self.amountToMovePerSecond = 900.00
+
+            }
+            case 4: do{
+                levelDuration = 0.2
+                self.amountToMovePerSecond = 1200.00
+            }
             default:
                 levelDuration = 0.5
                 print("No level info")
@@ -296,7 +370,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.removeAction(forKey: runKey)
-        if currentGameState == gameState.inGame{
+        if currentGameState == gameState.preGame{
+            startGame()
+        }
+        else if currentGameState == gameState.inGame{
             fireBulletDuration()
         }
     }
